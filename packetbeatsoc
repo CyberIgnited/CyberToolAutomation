@@ -1,0 +1,71 @@
+#Shorten YAML File to make it easier to put it powershell script
+
+#This is a required configuration File for the main script to work
+
+#Run packetbeat.exe -devices to see which device you wanna sniff
+packetbeat.interfaces.device: 2
+packetbeat.flows:
+    timeout: 30s
+    period: 10s
+packetbeat.protocols:
+-   type: icmp
+    enabled: true
+-   type: amqp
+    enabled: true
+    ports: [5672]
+-   type: cassandra
+    enabled: true
+    ports:  [9042]
+-   type: dhcpv4
+    enabled: true
+    ports:  [67, 68]
+-   type: dns
+    enabled: true
+    ports: [53]
+-   type: http
+    enabled: true
+    ports: [80, 8080, 8000, 5000, 8002]
+-   type: memcache
+    enabled: true
+    ports: [11211]
+-   type: mysql
+    enabled: true
+    ports: [3306, 3307]
+-   type: pgsql
+    enabled: true
+    ports: [5432]
+-   type: redis
+    enabled: true
+    ports: [6379]
+-   type: thrift
+    enabled: true
+    ports: [9090]
+-   type: mongodb
+    enabled: true
+    ports: [27017]
+-   type: nfs
+    enabled: true
+    ports: [2049]
+-   type: tls
+    enabled: true
+    ports: 
+        - 443
+        - 993
+        - 995
+        - 5223
+        - 8443
+        - 8883
+        - 9243
+
+setup.template.settings:
+    index.number_of_shards: 1
+
+setup.dashboards.enabled: true
+setup.kibana:
+    host: "localhost:5601"
+output.elasticsearch:
+    hosts: ["localhost:9200"]
+processors:
+    - add_host_metadata: ~
+    - add_cloud_metadata: ~
+    - add_docker_metadata: ~
