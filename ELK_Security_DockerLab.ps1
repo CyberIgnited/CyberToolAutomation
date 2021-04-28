@@ -1,5 +1,5 @@
 # Cyber Security lab using Docker and the ELK Stack
-# BY Jonathan Self 
+# BY CyberIgnited
 # I created this with the idea of other security engineers wanting to get started in Docker, ELK, and Utilizing these tools for Cyber Security Practice\
 # Please enjoy
 
